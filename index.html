@@ -12,15 +12,11 @@
         <p>Click the button to increase your score:</p>
         <button id="clickBtn">Click Me!</button>
         <p>Your Score: <span id="score">0</span></p>
-        <p>Views: <span id="viewCount">0</span></p> <!-- Add view count here -->
+        <p>Views: <span id="viewCount">0</span></p>
+        <p>World Record: <span id="worldRecord">0</span></p> <!-- World record display -->
     </div>
     <script src="script.js"></script>
     <script>
-        // Increment view count on page load
-        window.onload = function() {
-            incrementViewCount();
-        };
-
         // Function to increment view count
         function incrementViewCount() {
             // Retrieve current view count from localStorage
@@ -37,8 +33,14 @@
             // Display view count on the page
             document.getElementById('viewCount').textContent = viewCount;
         }
+
+        // Increment view count on page load
+        window.onload = function() {
+            incrementViewCount();
+            // Retrieve and display world record
+            let worldRecord = localStorage.getItem('worldRecord') || 0;
+            document.getElementById('worldRecord').textContent = worldRecord;
+        };
     </script>
 </body>
 </html>
-<p>World Record: <span id="worldRecord">0</span></p>
-
