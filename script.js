@@ -1,9 +1,16 @@
 let score = 0;
+let worldRecord = localStorage.getItem('worldRecord') || 0; // Retrieve world record from localStorage
 
 // Function to increment score when button is clicked
 function increaseScore() {
     score++;
     document.getElementById('score').textContent = score;
+    if (score > worldRecord) {
+        // Update world record if the current score exceeds it
+        worldRecord = score;
+        localStorage.setItem('worldRecord', worldRecord);
+        document.getElementById('worldRecord').textContent = worldRecord;
+    }
 }
 
 // Function to increment view count
