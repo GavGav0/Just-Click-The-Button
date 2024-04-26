@@ -1,4 +1,6 @@
 let score = 0;
+let worldRecord = localStorage.getItem('worldRecord') || 0;
+let views = localStorage.getItem('viewCount') || 0;
 
 // Function to increment score when button is clicked
 function increaseScore() {
@@ -9,13 +11,26 @@ function increaseScore() {
 
 // Function to update world record
 function updateWorldRecord() {
-    let worldRecord = localStorage.getItem('worldRecord') || 0;
     if (score > worldRecord) {
         // Update world record if the current score exceeds it
-        localStorage.setItem('worldRecord', score);
-        document.getElementById('worldRecord').textContent = score;
+        worldRecord = score;
+        localStorage.setItem('worldRecord', worldRecord);
+        document.getElementById('worldRecord').textContent = worldRecord;
     }
 }
+
+// Function to increment view count
+function incrementViewCount() {
+    views++;
+    localStorage.setItem('viewCount', views);
+    document.getElementById('viewCount').textContent = views;
+}
+
+// Increment view count on page load
+window.onload = function() {
+    incrementViewCount();
+    document.getElementById('worldRecord').textContent = worldRecord;
+};
 
 // Event listener for button click
 document.getElementById('clickBtn').addEventListener('click', increaseScore);
