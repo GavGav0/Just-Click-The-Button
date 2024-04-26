@@ -1,4 +1,5 @@
-// Initialize world record and view count
+// Initialize score, world record, and views
+let score = 0;
 let worldRecord = 0;
 let views = 0;
 
